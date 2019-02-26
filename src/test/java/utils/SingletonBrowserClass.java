@@ -3,6 +3,8 @@ package utils;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import java.util.concurrent.TimeUnit;
+
 public class SingletonBrowserClass {
 
     // instance of singleton class
@@ -14,6 +16,7 @@ public class SingletonBrowserClass {
     private SingletonBrowserClass(){
         System.setProperty("webdriver.chrome.driver","src/test/resources/chromedriver");
         driver= new ChromeDriver();
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }
 
     // TO create instance of class
