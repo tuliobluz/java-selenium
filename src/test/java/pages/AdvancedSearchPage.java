@@ -29,6 +29,9 @@ public class AdvancedSearchPage {
     })
     public List<WebElement> listOfCar;
 
+    @FindBy(xpath="//div[@data-qa-selector='results-amount']")
+    public WebElement loading;
+
     public void clickAdvancedSearch(){
         buttonAdvancedSearch.click();
     }
