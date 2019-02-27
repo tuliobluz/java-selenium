@@ -14,10 +14,9 @@ import Utils.SingletonBrowserClass;
 
 import java.util.List;
 
-
 public class SearchStep {
 
-    SingletonBrowserClass sbc= SingletonBrowserClass.getInstanceOfSingletonBrowserClass();
+    SingletonBrowserClass sbc = SingletonBrowserClass.getInstanceOfSingletonBrowserClass();
     WebDriver driver = sbc.getDriver();
 
     SearchPage searchPage;

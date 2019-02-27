@@ -21,7 +21,7 @@ I used the technologies below:
     * ```Utils ``` Where the helpers can be created and classes methods to reuse.
         * ```Helpers``` This class is responsible to create methods to reuse, waits and etc.
         * ```SingletonBrowserClass``` This class is responsible to create the unique instance of the browser
-        * ```TestRunner.data```
+        * ```TestRunner```
 * ```test/resources ``` It is responsible to keep the drivers.
 
 ## Requirement
@@ -34,6 +34,15 @@ I used the technologies below:
 
 - Run ```mvn clean``` clean the project
 - Run ```mvn compile``` compile the source code of the project
+
+### Download the driver
+
+- [Donwload](https://chromedriver.storage.googleapis.com/index.html?path=2.46/) the driver to your OS
+- Unpack the driver in this folder ```javaAutomation/src/test/resources```
+
+- If you are using Windows, you should change the ```line 17``` on the file```/javaAutomation/src/test/java/Utils/SingletonBrowserClass.java```
+
+System.setProperty("webdriver.chrome.driver","src/test/resources/chromedriver.exe");
 
 ## Running tests
 
