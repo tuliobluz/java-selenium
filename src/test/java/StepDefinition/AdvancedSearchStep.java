@@ -12,7 +12,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import utils.SingletonBrowserClass;
+
 import pages.AdvancedSearchPage;
+import utils.Helpers;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,6 +25,7 @@ public class AdvancedSearchStep {
     WebDriver driver = sbc.getDriver();
 
     AdvancedSearchPage searchPage;
+    Helpers helpers = new Helpers();
 
     @Given("The user goes to Search Page")
     public void the_user_goes_to_Search_Page() {
@@ -50,11 +53,8 @@ public class AdvancedSearchStep {
         searchPage = new AdvancedSearchPage(driver);
         searchPage.selectOrder();
 
-        WebDriverWait wait = new WebDriverWait(driver, 30);
+        helpers.waitTextNotToBePreset(searchPage.loading,"Lädt...", driver);
 
-        WebElement element = searchPage.loading;
-        wait.until(ExpectedConditions.not(
-            ExpectedConditions.textToBePresentInElement(element,"Lädt...")));
     }
 
     @Then("The user should see cars that fit on the search order by price descending")
