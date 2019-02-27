@@ -5,8 +5,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.util.List;
-
 public class Helpers {
 
     public void waitTextNotToBePreset(WebElement element, String text, WebDriver driver){
@@ -21,7 +19,6 @@ public class Helpers {
 
         WebDriverWait wait = new WebDriverWait(driver, 30);
 
-        wait.until(ExpectedConditions.not(
-                ExpectedConditions.visibilityOf(element)));
+        wait.until(ExpectedConditions.visibilityOf((element)));
     }
 }

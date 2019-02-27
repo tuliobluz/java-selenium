@@ -9,22 +9,20 @@ import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import utils.SingletonBrowserClass;
 
-import pages.AdvancedSearchPage;
+import pages.SearchPage;
 import utils.Helpers;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class AdvancedSearchStep {
+public class SearchStep {
 
     SingletonBrowserClass sbc= SingletonBrowserClass.getInstanceOfSingletonBrowserClass();
     WebDriver driver = sbc.getDriver();
 
-    AdvancedSearchPage searchPage;
+    SearchPage searchPage;
     Helpers helpers = new Helpers();
 
     @Given("The user goes to Search Page")
@@ -33,34 +31,30 @@ public class AdvancedSearchStep {
         driver.get("https://www.autohero.com/de/search/");
     }
 
-    @When("The user fills the advanced filters")
-    public void the_user_fills_the_advanced_filters() {
-
-        searchPage = new AdvancedSearchPage(driver);
-        searchPage.clickAdvancedSearch();
-    }
-
-    @When("The user submits the search")
-    public void the_user_submits_the_search() {
-
-        searchPage = new AdvancedSearchPage(driver);
-        searchPage.clickResults();
-    }
-
     @When("The user order the list by price descending")
     public void the_user_order_the_list_by_price_descending() {
 
-        searchPage = new AdvancedSearchPage(driver);
+        searchPage = new SearchPage(driver);
         searchPage.selectOrder();
 
         helpers.waitTextNotToBePreset(searchPage.loading,"Lädt...", driver);
 
     }
 
+    @When("The user fills the search")
+    public void the_user_fills_the_search() {
+
+        searchPage = new SearchPage(driver);
+        searchPage.clickDateFrom();
+        searchPage.selectDateFrom();
+
+        helpers.waitElementToBePreset(searchPage.filter, driver);
+    }
+
     @Then("The user should see cars that fit on the search order by price descending")
     public void the_user_should_see_cars_that_fit_on_the_search_order_by_price_descending() {
 
-        searchPage = new AdvancedSearchPage(driver);
+        searchPage = new SearchPage(driver);
         List<Integer> prices = new ArrayList<Integer>();
         //Convert list of String to list of integer
         for(WebElement e : searchPage.listOfCar){

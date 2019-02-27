@@ -9,38 +9,41 @@ import org.openqa.selenium.support.PageFactory;
 import java.util.List;
 
 
-public class AdvancedSearchPage {
+public class SearchPage {
 
-    public AdvancedSearchPage(WebDriver driver) {
+    public SearchPage(WebDriver driver) {
         PageFactory.initElements(driver, this);
     }
 
-    @FindBy(xpath="//button[@data-qa-selector='advanced-search-button']")
-    WebElement buttonAdvancedSearch;
-
-    @FindBy(xpath="//a[@data-qa-selector='advanced-search-button-apply']")
-    WebElement buttonResults;
-
     @FindBy(name="sort")
     WebElement orderByList;
+
+    @FindBy(name="yearRange.min")
+    WebElement selectDate;
 
     @FindBys({
             @FindBy(css=".totalPrice___3yfNv")
     })
     public List<WebElement> listOfCar;
 
+    @FindBy(xpath="//div[@data-qa-selector='filter-year']")
+    WebElement buttonDateFrom;
+
     @FindBy(xpath="//div[@data-qa-selector='results-amount']")
     public WebElement loading;
 
-    public void clickAdvancedSearch(){
-        buttonAdvancedSearch.click();
-    }
+    @FindBy(xpath="//li[@data-qa-selector='active-filter']")
+    public WebElement filter;
 
-    public void clickResults(){
-        buttonResults.click();
+    public void clickDateFrom(){
+        buttonDateFrom.click();
     }
 
     public void selectOrder(){
         orderByList.sendKeys("Höchster Preis");
+    }
+
+    public void selectDateFrom(){
+        selectDate.sendKeys("2014");
     }
 }
