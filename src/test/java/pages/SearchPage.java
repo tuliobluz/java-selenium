@@ -49,7 +49,9 @@ public class SearchPage {
         orderByList.sendKeys("Höchster Preis");
     }
 
-    public void selectDateFrom(){
-        selectDate.sendKeys("2014");
+    public void selectDateFrom(Integer year){
+
+        String yearSelect = Integer.toString(year);
+        selectDate.sendKeys(yearSelect);
     }
 }

@@ -23,6 +23,8 @@ public class SearchStep {
     SearchPage searchPage;
     Helpers helpers = new Helpers();
 
+    Integer year = 2014;
+
     @Given("The user goes to Search Page")
     public void the_user_goes_to_Search_Page() {
 
@@ -44,7 +46,7 @@ public class SearchStep {
 
         searchPage = new SearchPage(driver);
         searchPage.clickDateFrom();
-        searchPage.selectDateFrom();
+        searchPage.selectDateFrom(year);
 
         helpers.waitElementToBePreset(searchPage.filter, driver);
     }
@@ -53,15 +55,14 @@ public class SearchStep {
     public void the_user_should_see_cars_that_fit_on_the_search_order_by_price_descending() {
 
         searchPage = new SearchPage(driver);
-
         List<Integer> prices = helpers.convertListPrice(searchPage.listOfCar);
         List<Integer> years = helpers.convertListYear(searchPage.listOfYear);
 
         for(int i = 0; i < (prices.size()-1); i++){
-            Assert.assertTrue( prices.get(i) >= prices.get(i+1));
+            Assert.assertTrue( "Ordenation is not working",prices.get(i) >= prices.get(i+1));
         }
         for(int i = 0; i < (years.size()-1); i++){
-            Assert.assertTrue( years.get(i) >= 2014);
+            Assert.assertTrue( "Filtering of year is not working", years.get(i) >= year);
         }
     }
 
