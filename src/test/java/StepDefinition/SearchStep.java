@@ -8,9 +8,9 @@ import cucumber.api.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 
-import pages.SearchPage;
-import utils.Helpers;
-import utils.SingletonBrowserClass;
+import Pages.SearchPage;
+import Utils.Helpers;
+import Utils.SingletonBrowserClass;
 
 import java.util.List;
 
