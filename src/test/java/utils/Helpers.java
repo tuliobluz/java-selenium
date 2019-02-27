@@ -43,7 +43,6 @@ public class Helpers {
         //Convert list of String to list of integer
         for(WebElement e : list){
             String priceString[] = e.getText().split("/");
-            System.out.println(priceString[1]);
             listConverted.add(Integer.parseInt(priceString[1]));
         }
 
