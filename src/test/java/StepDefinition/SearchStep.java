@@ -8,14 +8,12 @@ import cucumber.api.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 
-import org.openqa.selenium.WebElement;
-import utils.SingletonBrowserClass;
-
 import pages.SearchPage;
 import utils.Helpers;
+import utils.SingletonBrowserClass;
 
-import java.util.ArrayList;
 import java.util.List;
+
 
 public class SearchStep {
 
@@ -55,15 +53,15 @@ public class SearchStep {
     public void the_user_should_see_cars_that_fit_on_the_search_order_by_price_descending() {
 
         searchPage = new SearchPage(driver);
-        List<Integer> prices = new ArrayList<Integer>();
-        //Convert list of String to list of integer
-        for(WebElement e : searchPage.listOfCar){
-            String priceString = e.getText().replace("€", "").replace(".","").trim();
-            prices.add(Integer.parseInt(priceString));
-        }
+
+        List<Integer> prices = helpers.convertListPrice(searchPage.listOfCar);
+        List<Integer> years = helpers.convertListYear(searchPage.listOfYear);
 
         for(int i = 0; i < (prices.size()-1); i++){
             Assert.assertTrue( prices.get(i) >= prices.get(i+1));
+        }
+        for(int i = 0; i < (years.size()-1); i++){
+            Assert.assertTrue( years.get(i) >= 2014);
         }
     }
 

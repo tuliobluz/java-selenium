@@ -26,6 +26,12 @@ public class SearchPage {
     })
     public List<WebElement> listOfCar;
 
+    @FindBys({
+            @FindBy(xpath="//a[@data-qa-selector='ad']/ul/li[1]")
+    })
+    public List<WebElement> listOfYear;
+
+
     @FindBy(xpath="//div[@data-qa-selector='filter-year']")
     WebElement buttonDateFrom;
 
